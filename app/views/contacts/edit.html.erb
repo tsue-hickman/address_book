@@ -1,0 +1,35 @@
+<div style="max-width: 600px; margin: 50px auto; padding: 20px; border: 1px solid #dee2e6; border-radius: 5px;">
+  <h1>Edit Contact</h1>
+  
+  <%= form_with(model: @contact) do |f| %>
+    <% if @contact.errors.any? %>
+      <div style="background: #f8d7da; color: #721c24; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+        <ul style="margin: 0; padding-left: 20px;">
+          <% @contact.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div style="margin-bottom: 15px;">
+      <%= f.label :first_name, "First Name" %><br>
+      <%= f.text_field :first_name, style: "width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px;" %>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <%= f.label :last_name, "Last Name" %><br>
+      <%= f.text_field :last_name, style: "width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px;" %>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <%= f.label :phone, "Phone Number" %><br>
+      <%= f.text_field :phone, style: "width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px;" %>
+    </div>
+
+    <div style="display: flex; gap: 10px;">
+      <%= f.submit "Update Contact", style: "background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;" %>
+      <%= link_to "Cancel", contact_path(@contact), style: "background: #6c757d; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;" %>
+    </div>
+  <% end %>
+</div>

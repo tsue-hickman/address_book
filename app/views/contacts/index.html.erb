@@ -1,0 +1,38 @@
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <h1>My Address Book</h1>
+    <div>
+      <%= link_to "New Contact", new_contact_path, style: "background: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;" %>
+      <%= button_to "Sign Out", destroy_user_session_path, method: :delete, style: "background: #dc3545; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-left: 10px;" %>
+    </div>
+  </div>
+
+  <% if @contacts.any? %>
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background: #f8f9fa; border-bottom: 2px solid #dee2e6;">
+          <th style="padding: 12px; text-align: left;">First Name</th>
+          <th style="padding: 12px; text-align: left;">Last Name</th>
+          <th style="padding: 12px; text-align: left;">Phone</th>
+          <th style="padding: 12px; text-align: left;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @contacts.each do |contact| %>
+          <tr style="border-bottom: 1px solid #dee2e6;">
+            <td style="padding: 12px;"><%= contact.first_name %></td>
+            <td style="padding: 12px;"><%= contact.last_name %></td>
+            <td style="padding: 12px;"><%= contact.phone %></td>
+            <td style="padding: 12px;">
+              <%= link_to "View", contact_path(contact), style: "color: #007bff; margin-right: 10px;" %>
+              <%= link_to "Edit", edit_contact_path(contact), style: "color: #28a745; margin-right: 10px;" %>
+              <%= button_to "Delete", contact_path(contact), method: :delete, data: { confirm: "Are you sure?" }, style: "background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p style="text-align: center; color: #6c757d; margin-top: 50px;">No contacts yet. Click "New Contact" to add one!</p>
+  <% end %>
+</div>

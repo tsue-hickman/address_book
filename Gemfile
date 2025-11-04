@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "~> 3.4.0"
 
 gem "rails", "~> 8.0.3"
-gem "sqlite3", ">= 2.1"
+gem "pg"
 gem "puma", ">= 5.0"
 gem "importmap-rails"
 gem "turbo-rails"
