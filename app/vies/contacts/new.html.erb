@@ -1,0 +1,36 @@
+<div style="max-width: 600px; margin: 50px auto; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+  <h1 style="color: #2c3e50; margin-bottom: 30px; font-size: 2em;">➕ New Contact</h1>
+  
+  <%= form_with(model: @contact) do |f| %>
+    <% if @contact.errors.any? %>
+      <div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: #721c24; padding: 20px; margin-bottom: 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(250, 112, 154, 0.3);">
+        <strong>⚠️ Please fix these errors:</strong>
+        <ul style="margin: 10px 0 0 20px; padding: 0;">
+          <% @contact.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div style="margin-bottom: 25px;">
+      <%= f.label :first_name, "First Name", style: "display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 600; font-size: 16px;" %>
+      <%= f.text_field :first_name, style: "width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; transition: border 0.3s; box-sizing: border-box;", placeholder: "Enter first name" %>
+    </div>
+
+    <div style="margin-bottom: 25px;">
+      <%= f.label :last_name, "Last Name", style: "display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 600; font-size: 16px;" %>
+      <%= f.text_field :last_name, style: "width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; transition: border 0.3s; box-sizing: border-box;", placeholder: "Enter last name" %>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+      <%= f.label :phone, "Phone Number", style: "display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 600; font-size: 16px;" %>
+      <%= f.text_field :phone, style: "width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; transition: border 0.3s; box-sizing: border-box;", placeholder: "555-1234" %>
+    </div>
+
+    <div style="display: flex; gap: 15px; margin-top: 30px;">
+      <%= f.submit "✅ Create Contact", style: "flex: 1; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; padding: 14px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 16px; box-shadow: 0 4px 8px rgba(17, 153, 142, 0.3);" %>
+      <%= link_to "❌ Cancel", contacts_path, style: "flex: 1; background: linear-gradient(135deg, #bdc3c7 0%, #95a5a6 100%); color: white; padding: 14px 24px; text-decoration: none; border-radius: 8px; text-align: center; font-weight: 600; font-size: 16px; box-shadow: 0 4px 8px rgba(149, 165, 166, 0.3); display: flex; align-items: center; justify-content: center;" %>
+    </div>
+  <% end %>
+</div>
