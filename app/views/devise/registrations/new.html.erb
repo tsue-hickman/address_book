@@ -1,0 +1,39 @@
+<div style="min-height: 100vh; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); display: flex; align-items: center; justify-content: center; padding: 20px;">
+  <div style="max-width: 450px; width: 100%; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+    <div style="text-align: center; margin-bottom: 35px;">
+      <div style="font-size: 4em; margin-bottom: 15px;">✨</div>
+      <h2 style="color: #2c3e50; margin: 0; font-size: 2em;">Create Account</h2>
+      <p style="color: #7f8c8d; margin-top: 10px;">Join us and organize your contacts!</p>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div style="margin-bottom: 25px;">
+        <%= f.label :email, "Email", style: "display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 600;" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, style: "width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box;", placeholder: "your@email.com" %>
+      </div>
+
+      <div style="margin-bottom: 25px;">
+        <%= f.label :password, "Password", style: "display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 600;" %>
+        <% if @minimum_password_length %>
+          <small style="color: #7f8c8d;">(minimum <%= @minimum_password_length %> characters)</small>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password", required: true, style: "width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box;", placeholder: "Create a password" %>
+      </div>
+
+      <div style="margin-bottom: 25px;">
+        <%= f.label :password_confirmation, "Confirm Password", style: "display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 600;" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, style: "width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box;", placeholder: "Confirm your password" %>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <%= f.submit "🚀 Sign up", style: "width: 100%; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; padding: 14px; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 12px rgba(17, 153, 142, 0.4);" %>
+      </div>
+
+      <div style="text-align: center; margin-top: 20px;">
+        <%= link_to "Already have an account? Log in", new_session_path(resource_name), style: "color: #11998e; text-decoration: none; font-weight: 600;" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div style="min-height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; padding: 20px;">
+  <div style="max-width: 450px; width: 100%; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+    <div style="text-align: center; margin-bottom: 35px;">
+      <div style="font-size: 4em; margin-bottom: 15px;">📇</div>
+      <h2 style="color: #2c3e50; margin: 0; font-size: 2em;">Welcome Back!</h2>
+      <p style="color: #7f8c8d; margin-top: 10px;">Sign in to your address book</p>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div style="margin-bottom: 25px;">
+        <%= f.label :email, "Email", style: "display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 600;" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box;", placeholder: "your@email.com" %>
+      </div>
+
+      <div style="margin-bottom: 25px;">
+        <%= f.label :password, "Password", style: "display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 600;" %>
+        <%= f.password_field :password, autocomplete: "current-password", style: "width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box;", placeholder: "Enter your password" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div style="margin-bottom: 25px;">
+          <%= f.check_box :remember_me, style: "margin-right: 8px;" %>
+          <%= f.label :remember_me, style: "color: #2c3e50;" %>
+        </div>
+      <% end %>
+
+      <div style="margin-bottom: 20px;">
+        <%= f.submit "🔓 Log in", style: "width: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 14px; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);" %>
+      </div>
+
+      <div style="text-align: center; margin-top: 20px;">
+        <%= link_to "Don't have an account? Sign up", new_registration_path(resource_name), style: "color: #667eea; text-decoration: none; font-weight: 600;" %><br />
+        <%= link_to "Forgot your password?", new_password_path(resource_name), style: "color: #95a5a6; text-decoration: none; font-size: 14px; margin-top: 10px; display: inline-block;" %>
+      </div>
+    <% end %>
+  </div>
+</div>
